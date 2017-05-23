@@ -7,11 +7,12 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
   showTable: boolean = false;
 
   constructor(appService: AppService) {
-    appService.showTable$.subscribe(result => this.showTable = result);
-    console.log("Show Table: " + this.showTable);
+    appService.showTable$.subscribe(result => {
+      this.showTable = result;
+    });
   }
+
 }
