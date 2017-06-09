@@ -1,9 +1,9 @@
-import {Category } from './category';
+import { Category } from './category';
 
 export class Budget {
     id: number;
-    name: string;
+    description: string;
     category: Category;
-    expense: number;
+    cost: number;
     numOfBurritos: number;
 }

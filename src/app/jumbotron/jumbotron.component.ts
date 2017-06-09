@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
+import { Budget } from '../budget';
+import { Category } from '../category';
+
 
 @Component({
   selector: 'app-jumbotron',
@@ -25,8 +28,9 @@ export class JumbotronComponent implements OnInit {
     }
   }
 
-  addRow() {
+  addExpense() {
     this.showButton2 = true;
+    this.appService.addRow();
   }
 
   cancel() {
