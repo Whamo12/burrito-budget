@@ -1,11 +1,13 @@
 <div class="container">
   <app-jumbotron></app-jumbotron>
-  <form class="form-inline" #budgetDetailForm="ngForm" (ngSubmit)="onSubmit(budget)" *ngIf="budget">
+  <form class="form-inline" #budgetDetailForm="ngForm" (ngSubmit)="onSubmit(budget); budgetDetailForm.reset()" *ngIf="budget">
     <div class="form-group">
-      <input required type="text" class="form-control" id="description" name="description" placeholder="Name" #description="ngModel" [(ngModel)]="budget.description">
+      <input required type="text" class="form-control" id="description" name="description" placeholder="Description" #description="ngModel"
+        [(ngModel)]="budget.description">
     </div>
     <div class="form-group">
-      <input required type="text" class="form-control" id="category" name="category" placeholder="Category" #category="ngModel" [(ngModel)]="budget.category">
+      <input required type="number" class="form-control" id="category" name="category" placeholder="Category" #category="ngModel"
+        [(ngModel)]="budget.category">
     </div>
     <div class="form-group">
       <input required type="number" class="form-control" id="cost" name="cost" placeholder="Cost" #cost="ngModel" [(ngModel)]="budget.cost">
@@ -13,6 +15,27 @@
     <button [disabled]="!budgetDetailForm.valid" type="submit" class="btn btn-md btn-success">Submit</button>
   </form>
   <br>
-  <app-table></app-table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Cost</th>
+        <th># of Burritos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of budgets">
+        <td>{{b?.id}}</td>
+        <td>{{b?.description}}</td>
+        <td>{{b?.category}}</td>
+        <td>{{b?.cost | currency:'USD':true}}</td>
+        <!-- <td><input type="text" #cost="ngModel" name="cost" (ngModel)="b.cost"></td> -->
+        <td>{{b?.cost / 9.5 | number: '1.2-2'}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-md btn-default pull-right" (click)="reset()" role="button">Reset</button>
 </div>
 <app-footer></app-footer>

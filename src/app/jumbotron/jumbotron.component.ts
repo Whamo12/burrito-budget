@@ -20,7 +20,7 @@ export class JumbotronComponent implements OnInit {
   ngOnInit() {}
 
   showTable() {
-    this.appService.activateTable();
+    //this.appService.activateTable();
     this.showButton1 = false;
     this.showButton2 = true;
     if(this.showButton2) {
@@ -30,7 +30,7 @@ export class JumbotronComponent implements OnInit {
 
   addExpense() {
     this.showButton2 = true;
-    this.appService.addRow();
+    //this.appService.addRow();
   }
 
   cancel() {

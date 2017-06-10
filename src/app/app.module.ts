@@ -8,15 +8,13 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { AppService } from './app.service';
-import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-    JumbotronComponent,
-    TableComponent
+    JumbotronComponent
   ],
   imports: [
     BrowserModule,
