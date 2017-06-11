@@ -1,9 +1,5 @@
 <div class="jumbotron">
   <h1>Burrito Budget</h1>
   <p class="lead">How many burritos can you afford?</p>
-  <!--
-  <p *ngIf="showButton1"><a class="btn btn-lg btn-success" (click)="showTable()" role="button">{{buttonName}}</a></p>
-  <p *ngIf="showButton2"><a class="btn btn-lg btn-success" (click)="addExpense()" role="button">{{buttonName}}</a></p>
-  <a class="btn btn-md btn-info" (click)="cancel()" role="button">{{cancelButton}}</a>
-  -->
+  <h5 class="row align-items-center">Total Monthly Burritos: {{totalBurritos | number: '1.2-2'}}</h5>
 </div>

@@ -1,13 +1,15 @@
+<app-nav></app-nav>
 <div class="container">
-  <app-jumbotron></app-jumbotron>
+  <app-jumbotron [totalBurritos]="totalBurritos"></app-jumbotron>
   <form class="form-inline" #budgetDetailForm="ngForm" (ngSubmit)="onSubmit(budget); budgetDetailForm.reset()" *ngIf="budget">
     <div class="form-group">
       <input required type="text" class="form-control" id="description" name="description" placeholder="Description" #description="ngModel"
         [(ngModel)]="budget.description">
     </div>
     <div class="form-group">
-      <input required type="number" class="form-control" id="category" name="category" placeholder="Category" #category="ngModel"
-        [(ngModel)]="budget.category">
+      <select required type="number" class="form-control" id="category" name="category" #category="ngModel" [(ngModel)]="budget.category">
+        <option placeholder="Category" *ngFor="let c of categories" [ngValue]="c">{{c.name}}</option>
+      </select>
     </div>
     <div class="form-group">
       <input required type="number" class="form-control" id="cost" name="cost" placeholder="Cost" #cost="ngModel" [(ngModel)]="budget.cost">
@@ -29,9 +31,9 @@
       <tr *ngFor="let b of budgets">
         <td>{{b?.id}}</td>
         <td>{{b?.description}}</td>
-        <td>{{b?.category}}</td>
-        <td>{{b?.cost | currency:'USD':true}}</td>
-        <!-- <td><input type="text" #cost="ngModel" name="cost" (ngModel)="b.cost"></td> -->
+        <td>{{b?.category?.name}}</td>
+        <td [ngStyle]="{'color':b.category.id != 13 ? 'red' : 'green'}">
+          {{b?.cost | currency:'USD':true}}</td>
         <td>{{b?.cost / 9.5 | number: '1.2-2'}}</td>
       </tr>
     </tbody>

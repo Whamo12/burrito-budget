@@ -10,25 +10,35 @@ import { Category } from './category';
 })
 
 export class AppComponent {
-  rowCount: number = 1;
   budget: Budget = new Budget();
   budgets: Budget[] = [];
+  categories: Category[] = [];
   error: Error;
+  totalBurritos: number = 0;
 
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
     this.getAllBudgets();
+    this.getCategories();
   }
 
-  increment(): void {
-    this.rowCount++;
-    console.log("rowCount: " + this.rowCount);
+  getCategories(): void {
+    this.appService.getCategories()
+      .then(categories => this.categories = categories)
+      .catch(error => this.error = error);
   }
 
   getAllBudgets(): void {
     this.appService.getAllBudgets()
       .then(budgets => this.budgets = budgets)
+      .catch(error => this.error = error)
+      .then(success => {
+        for (let budget of this.budgets) {
+          let temp: number = 0;
+          this.totalBurritos += (budget.cost / 9.5);
+        }
+      })
       .catch(error => this.error = error);
   }
 
@@ -41,9 +51,25 @@ export class AppComponent {
   }
 
   reset(): void {
-    this.appService.resetBudget()
-      .then(budgets => budgets = budgets)
-      .catch(error => this.error = error);
+    if (confirm("Are you sure to reset your burrito budget?")) {
+      for (let budget of this.budgets) {
+        this.appService.resetBudget(budget.id)
+          .then(success => {
+            this.getAllBudgets();
+            this.totalBurritos = 0;
+          })
+          .catch(error => this.error = error);
+      }
+    }
+  }
+
+  getStyle(id: number) {
+    if (id != 1) {
+      return "red";
+    }
+    else {
+      return "green";
+    }
   }
 
 }

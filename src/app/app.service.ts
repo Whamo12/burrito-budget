@@ -7,6 +7,8 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
 import { Budget } from './budget';
+import { Category } from './category';
+
 
 @Injectable()
 export class AppService {
@@ -44,12 +46,12 @@ export class AppService {
       .catch(error => this.error = error);
   }
 
-  resetBudget(): Promise<Budget[]> {
+  resetBudget(id: number): Promise<Budget[]> {
     let headers: Headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
 
-    let url = `${this.jsonServerAPI}/budget`;
+    let url = `${this.jsonServerAPI}/budget/` + id;
 
     return this.http
       .delete(url, options)
@@ -58,20 +60,18 @@ export class AppService {
       .catch(error => this.error = error);
   }
 
-  // Observable string sources
-  private refreshTable = new Subject<boolean>();
-  private row = new Subject<boolean>();
+  getCategories(): Promise<Category[]> {
+    let headers: Headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
 
-  // Observable string streams
-  refreshTable$ = this.refreshTable.asObservable();
+    let url = `${this.jsonServerAPI}/category`;
 
-  // Service message commands
-  updateTable() {
-    this.refreshTable.next(true);
-  }
-
-  deactivateTable() {
-    this.refreshTable.next(false);
+    return this.http
+      .get(url, options)
+      .toPromise()
+      .then(response => response.json() as Category[])
+      .catch(error => this.error = error);
   }
 
 }
