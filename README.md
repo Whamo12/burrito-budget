@@ -1,6 +1,6 @@
 # Burrito Budget
 
-An Angular tutorial application that converts your monthly budget to burritos!
+An Angular tutorial application that converts your monthly budget into burritos!
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.4.
 
