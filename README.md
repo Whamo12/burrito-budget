@@ -4,6 +4,18 @@ An Angular tutorial application that converts your monthly budget into burritos!
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.4.
 
+## Prerequisites
+
+Install the latest version of [Node.js](https://nodejs.org/en/)
+* `brew install node`
+
+Install [Angular CLI](https://github.com/angular/angular-cli)
+*  `npm install -g @angular/cli`
+
+To install the project dependencies, you will need to install [Yarn](https://yarnpkg.com/en/docs/install).
+* `brew update`
+* `npm install -g yarn`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
