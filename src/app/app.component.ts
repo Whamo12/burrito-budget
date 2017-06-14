@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   budgets: Budget[] = [];
   categories: Category[] = [];
   error: Error;
-  totalBurritos: number = 0;
+  appTotalBurritos: number = 0;
 
   constructor(private appService: AppService) { }
 
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
       .catch(error => this.error = error)
       .then(success => {
         for (let budget of this.budgets) {
-          this.totalBurritos += (budget.cost / 9.5);
+          this.appTotalBurritos += (budget.cost / 9.5);
         }
       })
       .catch(error => this.error = error);
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
         this.appService.resetBudget(budget.id)
           .then(success => {
             this.getAllBudgets();
-            this.totalBurritos = 0;
+            this.appTotalBurritos = 0;
           })
           .catch(error => this.error = error);
       }

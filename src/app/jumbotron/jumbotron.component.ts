@@ -10,7 +10,7 @@ import { Category } from '../category';
   styleUrls: ['./jumbotron.component.css']
 })
 export class JumbotronComponent implements OnInit {
-  @Input() totalBurritos: number = 0;
+  @Input() jumboTotalBurritos: number = 0;
 
   constructor(private appService: AppService) {}
 

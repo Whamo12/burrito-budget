@@ -1,6 +1,6 @@
 <app-nav></app-nav>
 <div class="container">
-  <app-jumbotron [totalBurritos]="totalBurritos"></app-jumbotron>
+  <app-jumbotron [jumboTotalBurritos]="appTotalBurritos"></app-jumbotron>
   <form class="form-inline" #budgetDetailForm="ngForm" (ngSubmit)="onSubmit(budget); budgetDetailForm.reset()" *ngIf="budget">
     <div class="form-group">
       <input required type="text" class="form-control" id="description" name="description" placeholder="Description" #description="ngModel"
