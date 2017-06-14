@@ -9,7 +9,7 @@ import { Category } from './category';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   budget: Budget = new Budget();
   budgets: Budget[] = [];
   categories: Category[] = [];
@@ -35,7 +35,6 @@ export class AppComponent {
       .catch(error => this.error = error)
       .then(success => {
         for (let budget of this.budgets) {
-          let temp: number = 0;
           this.totalBurritos += (budget.cost / 9.5);
         }
       })
