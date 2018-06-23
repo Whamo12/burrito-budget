@@ -19,11 +19,11 @@ export class AppService {
   constructor(private http: Http) { }
 
   saveBudget(budget: Budget): Promise<Budget> {
-    let headers: Headers = new Headers();
+    const headers: Headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers: headers });
 
-    let url = `${this.jsonServerAPI}/budget`;
+    const url = `${this.jsonServerAPI}/budget`;
 
     return this.http
       .post(url, JSON.stringify(budget), options)
@@ -33,11 +33,11 @@ export class AppService {
   }
 
   getAllBudgets(): Promise<Budget[]> {
-    let headers: Headers = new Headers();
+    const headers: Headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers: headers });
 
-    let url = `${this.jsonServerAPI}/budget`;
+    const url = `${this.jsonServerAPI}/budget`;
 
     return this.http
       .get(url, options)
@@ -47,11 +47,11 @@ export class AppService {
   }
 
   resetBudget(id: number): Promise<Budget[]> {
-    let headers: Headers = new Headers();
+    const headers: Headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers: headers });
 
-    let url = `${this.jsonServerAPI}/budget/` + id;
+    const url = `${this.jsonServerAPI}/budget/` + id;
 
     return this.http
       .delete(url, options)
@@ -61,11 +61,11 @@ export class AppService {
   }
 
   getCategories(): Promise<Category[]> {
-    let headers: Headers = new Headers();
+    const headers: Headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers: headers });
 
-    let url = `${this.jsonServerAPI}/category`;
+    const url = `${this.jsonServerAPI}/category`;
 
     return this.http
       .get(url, options)

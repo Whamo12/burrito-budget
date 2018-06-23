@@ -1,24 +1,5 @@
 {
-  "budget": [
-    {
-      "description": "test",
-      "category": {
-        "id": 3,
-        "name": "Business Services"
-      },
-      "cost": 2,
-      "id": 1
-    },
-    {
-      "description": "tsasfadfa",
-      "category": {
-        "id": 9,
-        "name": "Health & Fitness"
-      },
-      "cost": 23424234,
-      "id": 2
-    }
-  ],
+  "budget": [],
   "category": [
     {
       "id": 1,

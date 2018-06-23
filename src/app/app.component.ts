@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   budgets: Budget[] = [];
   categories: Category[] = [];
   error: Error;
-  appTotalBurritos: number = 0;
+  appTotalBurritos = 0;
 
   constructor(private appService: AppService) { }
 
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       .then(budgets => this.budgets = budgets)
       .catch(error => this.error = error)
       .then(success => {
-        for (let budget of this.budgets) {
+        for (const budget of this.budgets) {
           this.appTotalBurritos += (budget.cost / 9.5);
         }
       })
@@ -50,8 +50,8 @@ export class AppComponent implements OnInit {
   }
 
   reset(): void {
-    if (confirm("Are you sure to reset your burrito budget?")) {
-      for (let budget of this.budgets) {
+    if (confirm('Are you sure to reset your burrito budget?')) {
+      for (const budget of this.budgets) {
         this.appService.resetBudget(budget.id)
           .then(success => {
             this.getAllBudgets();
@@ -63,11 +63,10 @@ export class AppComponent implements OnInit {
   }
 
   getStyle(id: number) {
-    if (id != 1) {
-      return "red";
-    }
-    else {
-      return "green";
+    if (id !== 1) {
+      return 'red';
+    } else {
+      return 'green';
     }
   }
 
